@@ -20,7 +20,11 @@ const defaultProps = {
     render: 'explicit'
 };
 
-const isReady = () => typeof window !== 'undefined' && typeof window.grecaptcha !== 'undefined';
+const isReady = () =>
+  typeof window !== "undefined" &&
+  window.grecaptcha !== undefined &&
+  // need to check for presence of render, because reCaptcha creates { ready } first
+  !!window.grecaptcha.render;
 
 let readyCheck;
 
